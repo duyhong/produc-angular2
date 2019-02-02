@@ -1,0 +1,28 @@
+{
+	"data": [
+		{
+			"name": "Laptop",
+			"price": 2000,
+			"category": "Electronics",
+			"rating": 4.7
+		},
+		{
+			"name": "iPad",
+			"price": 1500,
+			"category": "Electronics",
+			"rating": 4.5
+		},
+		{
+			"name": "iRobot",
+			"price": 800,
+			"category": "Household",
+			"rating": 5
+		},
+		{
+			"name": "Iron",
+			"price": 120,
+			"category": "Electrical",
+			"rating": 3.3
+		}
+	]
+}

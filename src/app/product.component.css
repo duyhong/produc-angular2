@@ -1,0 +1,10 @@
+table{
+	border:1px solid black; 
+	display: table;
+}
+
+td, th {
+	border:1px solid black; 
+    //display: table-cell;
+    vertical-align: inherit;
+}
