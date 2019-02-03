@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Product, ProductService } from './product.service';
 import {Pipe,PipeTransform} from '@angular/core';
 import {FilterArrayPipe} from './filter.pipe'; 
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ProductComponent implements OnInit {
   @Output() clicked=new EventEmitter<Product>();
-  products: Observable<Product[]>;
+  //products: Observable<Product[]>;
+  products: Product[];
   items: Array<Product> = [];
   show = false;
   
@@ -21,6 +22,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
 	  this.productService.getProductsJson().subscribe(products=>(this.products=products));
+	  //this.products = this.productService.getProductsJson();
   }
   addItem(product) {
 	  this.items.push(product);
