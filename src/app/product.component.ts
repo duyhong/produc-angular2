@@ -14,9 +14,10 @@ import {FilterArrayPipe} from './filter.pipe';
 export class ProductComponent implements OnInit {
   @Output() clicked=new EventEmitter<Product>();
   //products: Observable<Product[]>;
-  products: Product[];
-  items: Array<Product> = [];
-  show = false;
+  private products: Product[];
+  private items: Array<Product> = [];
+  private show = false;
+  //checkout = false;
   
   constructor(private productService: ProductService) { }
 
@@ -29,5 +30,6 @@ export class ProductComponent implements OnInit {
   }
   showCart() {
 	  this.show = true;
+	  //this.checkout = true;
   }
 }

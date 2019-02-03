@@ -1,7 +1,7 @@
 	<h2>Product List</h2>
 	<select [(ngModel)]="filterText">
 		<option value="All">All</option>
-		<option value="Laptop">Laptop</option>
+		<option value="Laptop">laptop</option>
 		<option value="iPad">iPad</option>
 		<option value="Iron">Iron</option>
 		<option value="iRobot">iRobot</option>
@@ -16,6 +16,11 @@
 		</tr>
 	</table>
 	<button (click)="showCart()">Show Cart</button>
+	<span [ngSwitch]="show">
+		<ng-template [ngSwitchCase]="true">
+			<button (click)="checkout()">Checkout</button>
+		</ng-template>
+	</span>
 	<hr>
 	<span [ngSwitch]="show">
 		<ng-template [ngSwitchCase]="true">
