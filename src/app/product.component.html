@@ -1,9 +1,9 @@
 	<h2>Product List</h2>
 	<select [(ngModel)]="filterText">
 		<option value="All">All</option>
-		<option value="Laptop">laptop</option>
+		<option value="laptop">laptop</option>
 		<option value="iPad">iPad</option>
-		<option value="Iron">Iron</option>
+		<option value="iron">Iron</option>
 		<option value="iRobot">iRobot</option>
 	</select>
 	<table>
@@ -16,22 +16,30 @@
 		</tr>
 	</table>
 	<button (click)="showCart()">Show Cart</button>
-	<span [ngSwitch]="show">
+	<span [ngSwitch]="checkout">
 		<ng-template [ngSwitchCase]="true">
-			<button (click)="checkout()">Checkout</button>
+			<button (click)="checkOut()">Checkout</button>
 		</ng-template>
 	</span>
 	<hr>
 	<span [ngSwitch]="show">
 		<ng-template [ngSwitchCase]="true">
 			<table>
-		<tr>
-			<th>Product Name</th><th>Price</th><th>Category</th><th>Rating</th>
-		</tr>
-		<tr *ngFor="let item of items">
-			<td>{{item.name}}</td><td>{{item.price}}</td><td>{{item.category}}</td>
-			<td>{{item.rating}}</td>
-		</tr>
-	</table>
+				<tr>
+					<th>Product Name</th><th>Price</th><th>Quantity</th><th>Subtotal</th>
+				</tr>
+				<tr *ngFor="let key of objectKeys(items)">
+					<td>{{key}}</td><td>{{items[key][0]}}</td><td>{{items[key][1]}}</td>
+					<td>{{items[key][0]*items[key][1]}}</td>
+				</tr>
+			</table>
+			Total: {{total}}
+		</ng-template>
+	</span>
+	<br>
+	<span [ngSwitch]="showCheckout">
+		<ng-template [ngSwitchCase]="true">
+			Please enter your email to checkout: <input type="email" [(ngModel)] = 'email'/>
+			<button (click)="placeOrder()">Place Order</button>
 		</ng-template>
 	</span>

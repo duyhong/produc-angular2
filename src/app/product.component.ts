@@ -15,9 +15,20 @@ export class ProductComponent implements OnInit {
   @Output() clicked=new EventEmitter<Product>();
   //products: Observable<Product[]>;
   private products: Product[];
-  private items: Array<Product> = [];
+  //private items: Array<Product> = [];
   private show = false;
-  //checkout = false;
+  private checkout = false
+  private showCheckout = false;
+  private objectKeys = Object.keys;
+  private items = {};
+  private total = 0;
+  private email;
+  private checkoutObj = {};
+  //private laptopQuantity = 0;
+  //private iPadQuantity = 0;
+  //private iRobotQuantity = 0;
+  //private ironQuantity = 0;
+  //private dryerQuantity = 0;
   
   constructor(private productService: ProductService) { }
 
@@ -26,10 +37,34 @@ export class ProductComponent implements OnInit {
 	  //this.products = this.productService.getProductsJson();
   }
   addItem(product) {
-	  this.items.push(product);
+    console.log(product.name);
+    if(this.items[product.name]) {
+      this.items[product.name][1]++;
+    } else {
+      this.items[product.name] = [product.price,1];
+    }
+    this.total += product.price;
+    console.log(this.items[product.name]);
+	  //this.items.push(product);
+	  // switch(product.name) {
+		//   case "laptop": laptopQuantity++; break;
+		//   case "iPad": iPadQuantity++; break;
+		//   case "iRobot": iRobotQuantity++; break;
+		//   case "iron": ironQuantity++; break;
+		//   case "dryer": dryerQuantity++; break;
+	  // };
   }
   showCart() {
 	  this.show = true;
-	  //this.checkout = true;
+    this.checkout = true;
+    this.showCheckout = false;
+  }
+  checkOut() {
+	  //this.show = false;
+	  this.showCheckout = true;
+  }
+  placeOrder() {
+    this.checkoutObj[this.email] = this.items;
+    this.productService.sendEmail(this.checkoutObj);
   }
 }
