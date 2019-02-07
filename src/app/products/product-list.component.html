@@ -1,0 +1,18 @@
+	<h2>Product List</h2>
+	<select [(ngModel)]="filterText">
+		<option value="All">All</option>
+		<option value="laptop">laptop</option>
+		<option value="iPad">iPad</option>
+		<option value="iron">Iron</option>
+		<option value="iRobot">iRobot</option>
+	</select>
+	<table>
+		<tr>
+			<th>Product Name</th><th>Image</th><th>Price</th><th>Category</th><th>Rating</th><th>Action</th>
+		</tr>
+		<tr *ngFor="let product of products | filter:filterText">
+			<td>{{product.name}}</td><td><img src="./assets/images/{{product.name}}.jpg" style="width:50px"></td><td>{{product.price}}</td><td>{{product.category}}</td>
+			<td>{{product.rating}}</td><td><button (click)="addItem(product)">Add to cart</button></td>
+		</tr>
+	</table>
+	

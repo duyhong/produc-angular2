@@ -1,5 +1,5 @@
-	<h2>Product List</h2>
-	<select [(ngModel)]="filterText">
+	<h2>Checkout</h2>
+<!--<select [(ngModel)]="filterText">
 		<option value="All">All</option>
 		<option value="laptop">laptop</option>
 		<option value="iPad">iPad</option>
@@ -39,7 +39,9 @@
 	<br>
 	<span [ngSwitch]="showCheckout">
 		<ng-template [ngSwitchCase]="true">
+-->	
 			Please enter your email to checkout: <input type="email" [(ngModel)] = 'email'/>
 			<button (click)="placeOrder()">Place Order</button>
-		</ng-template>
+<!--	</ng-template>
 	</span>
+-->

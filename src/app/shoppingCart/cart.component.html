@@ -1,0 +1,19 @@
+<h2>Cart Detail</h2>
+<a [routerLink]="['/checkout', {outlets: {'checkout-route': ['checkout']}}]">Checkout</a>
+<button (click)="checkout()">Checkout</button>
+<table>
+	<tr>
+		<th>Product Name</th><th>Image</th><th>Price</th><th>Quantity</th><th>Subtotal</th>
+	</tr>
+	<tr *ngFor="let key of objectKeys(items)">
+		<td>{{key}}</td><td><img src="./assets/images/{{key}}.jpg" style="width:50px"></td>
+		<td>{{items[key][0]}}</td><td>{{items[key][1]}}</td>
+		<td>{{items[key][0]*items[key][1]}}</td>
+	</tr>
+</table>
+Total: ${{total}}
+
+<div>
+	<template #target></template> 
+ </div>
+<router-outlet name="checkout-route"></router-outlet>
