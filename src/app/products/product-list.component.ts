@@ -22,6 +22,7 @@ export class ProductListComponent implements OnInit {
   //private objectKeys = Object.keys;
   private items = {};
   private total = 0;
+  private addedProducts: Array<{}> = [];
   // private email;
   // private checkoutObj = {};
   
@@ -33,28 +34,24 @@ export class ProductListComponent implements OnInit {
   }
   addItem(product) {
     console.log(product.name);
+    let quantity;
+    let obj = {};
+    
     if(this.items[product.name]) {
-      this.items[product.name][1]++;
+      quantity  = this.items[product.name][1]++;
     } else {
-      this.items[product.name] = [product.price,1];
+      quantity = 1;
     }
+    
+    obj[product] = quantity;
+    this.addedProducts.push(obj); //adddedProducts = [{product:quantity}]
+    this.items[product.name] = [product.price,quantity];  //items = {laptop:[2000,1]}
     this.total += product.price;
+    
+    sessionStorage.setItem("addedProducts", JSON.stringify(this.addedProducts));
     sessionStorage.setItem("shopList", JSON.stringify(this.items));
     sessionStorage.setItem("total", ""+this.total);
     console.log(this.items[product.name]);
     console.log(this.items);
   }
-  // showCart() {
-	//   this.show = true;
-  //   this.checkout = true;
-  //   this.showCheckout = false;
-  // }
-  // checkOut() {
-	//   //this.show = false;
-	//   this.showCheckout = true;
-  // }
-  // placeOrder() {
-  //   this.checkoutObj[this.email] = this.items;
-  //   this.productService.sendEmail(this.checkoutObj);
-  // }
 }

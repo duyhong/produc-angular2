@@ -24,6 +24,8 @@ export class CheckoutComponent {
   //private total = 0;
   private email;
   private checkoutObj = {};
+  private addedProducts;
+  private dbObj = {};
   
   constructor(private productService: ProductService) { }
   //constructor() { }
@@ -52,7 +54,12 @@ export class CheckoutComponent {
 // 	  this.showCheckout = true;
 //   }
   placeOrder() {
+    //this.addedProducts = JSON.parse(sessionStorage.getItem("addedProducts"));
+    this.dbObj["customerEmail"] = this.email;
+    this.dbObj["productPurchases"] = JSON.parse(sessionStorage.getItem("addedProducts"));
     this.checkoutObj[this.email] = JSON.parse(sessionStorage.getItem("shopList"));
+    
     this.productService.sendEmail(this.checkoutObj);
+    this.productService.savePurchase(this.dbObj);
   }
 }

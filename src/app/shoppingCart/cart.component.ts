@@ -6,6 +6,7 @@ import { Component, Input, OnInit, ViewChild, ViewContainerRef, ComponentFactory
 //import { NgFor } from 'angular2/common';
 import { DynamicModule } from './dynamic.module';
 import {CheckoutComponent} from '../checkout/checkout.component';
+import { Product, ProductService } from '../products/product.service';
 
 @Component({
   selector: 'cart-product',
@@ -44,7 +45,7 @@ export class CartComponent implements OnInit {    // implements OnInit {
   ngOnInit() {
     this.items = JSON.parse(sessionStorage.getItem("shopList"));
     this.total = sessionStorage.getItem("total")
-    console.log(this.items);
+    console.log("shopList: " + this.items);
   }
 
   checkout() {
