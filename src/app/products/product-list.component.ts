@@ -43,7 +43,7 @@ export class ProductListComponent implements OnInit {
       quantity = 1;
     }
     
-    obj[product] = quantity;
+    obj[JSON.stringify(product)] = quantity;
     this.addedProducts.push(obj); //adddedProducts = [{product:quantity}]
     this.items[product.name] = [product.price,quantity];  //items = {laptop:[2000,1]}
     this.total += product.price;

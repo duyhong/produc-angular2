@@ -1,0 +1,47 @@
+<h2>Order List</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Order ID</th><th scope="col">Date of Order</th><th scope="col">Total Price</th><th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <!--<input type="hidden" value="{{order["_id"]}}">-->
+      <td>${{order._id}}</td><td>{{order.dateOfPurchase}}</td><td>${{order.total}}</td>
+      <td><button class="btn btn-sm btn-outline-primary" (click)="productDetail(content,order)">Order Detail</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Product Detail</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th><th scope="col">Image</th><th scope="col">Price</th>
+                <th scope="col">Quantity</th><th scope="col">Category</th><th scope="col">Rating</th>
+                <th scope="col">Help and Support</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products"> 
+                <td>{{product.name}}</td>
+                <td><img src="./assets/images/{{product.name}}.jpg" style="width:40px"></td>
+                <td>{{product.price}}</td><td>{{quantity}}</td>
+                <td>{{product.category}}</td><td>{{product.rating}}</td>
+                <td><button class="btn btn-sm btn-outline-primary" (click)="reportIssue()">Report Issue </button></td>
+              </tr>
+          </tbody>
+          </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>

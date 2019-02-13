@@ -8,15 +8,15 @@ export class Product {
 	name: string;
 	price: number;
 	category: string;
-	Rating: number;
+	rating: string;
 }
 
-export class Purchase {
-	_id: string;
-	dateOfPurchase: string;
-	customerEmail: string;
-	productPurchases: [];
-}
+// export class Purchase {
+// 	_id: string;
+// 	dateOfPurchase: string;
+// 	customerEmail: string;
+// 	productPurchases: [];
+// }
 
 @Injectable()
 export class ProductService {
@@ -29,16 +29,20 @@ export class ProductService {
 		//return this.http.get('http://127.0.0.1:3000/products').map((response: Response) => <Product[]>response.json());
 	}
 
-	savePurchase(dbObj) {
-		//let date = new Date().toLocaleDateString();
-		//let purchase = new Purchase();
-		const headers = new HttpHeaders().set('Content-Type', 'application/json');
+	// getPurchases() {
+	// 	return this.http.get<Purchase[]>('http://127.0.0.1:3000/purchase');
+	// }
 
-		this.http.post('http://127.0.0.1:3000/purchase', JSON.stringify(dbObj),{headers: headers})
-		.subscribe(data => {
-			console.log("data = " + data);
-		});
-	}
+	// savePurchase(dbObj) {
+	// 	//let date = new Date().toLocaleDateString();
+	// 	//let purchase = new Purchase();
+	// 	const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+	// 	this.http.post('http://127.0.0.1:3000/purchase', JSON.stringify(dbObj),{headers: headers})
+	// 	.subscribe(data => {
+	// 		console.log("data = " + data);
+	// 	});
+	// }
 
 	sendEmail(mailContent) {
 		//var emailid = mailContent["emailid"];

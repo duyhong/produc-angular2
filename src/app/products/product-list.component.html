@@ -6,13 +6,18 @@
 		<option value="iron">Iron</option>
 		<option value="iRobot">iRobot</option>
 	</select>
-	<table>
-		<tr>
-			<th>Product Name</th><th>Image</th><th>Price</th><th>Category</th><th>Rating</th><th>Action</th>
-		</tr>
-		<tr *ngFor="let product of products | filter:filterText">
-			<td>{{product.name}}</td><td><img src="./assets/images/{{product.name}}.jpg" style="width:50px"></td><td>{{product.price}}</td><td>{{product.category}}</td>
-			<td>{{product.rating}}</td><td><button (click)="addItem(product)">Add to cart</button></td>
-		</tr>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Product Name</th><th scope="col">Image</th><th scope="col">Price</th>
+				<th scope="col">Category</th><th scope="col">Rating</th><th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let product of products | filter:filterText">
+				<td>{{product.name}}</td><td><img src="./assets/images/{{product.name}}.jpg" style="width:50px"></td><td>{{product.price}}</td><td>{{product.category}}</td>
+				<td>{{product.rating}}</td><td><button (click)="addItem(product)">Add to cart</button></td>
+			</tr>
+	</tbody>
 	</table>
 	
