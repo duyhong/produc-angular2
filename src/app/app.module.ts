@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FilterArrayPipe} from './filter.pipe';
 // import { HttpModule } from '@angular/http';
 // import './rxjs-extensions';
@@ -23,6 +23,12 @@ import { OrderService } from './orders/order.service';
 //import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { IssuesComponent } from './issues/issues.component';
 import { IssueService } from './issues/issue.service';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,9 @@ import { IssueService } from './issues/issue.service';
 	  OrdersComponent,
     //OrderDetailComponent,
     IssuesComponent,
+    AuthenticationComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +60,20 @@ import { IssueService } from './issues/issue.service';
   entryComponents: [
     IssuesComponent
   ],
-  providers: [ProductService, OrderService, appRoutingProviders, NgbActiveModal, IssueService],
+  providers: [
+    ProductService, 
+    OrderService, 
+    appRoutingProviders, 
+    NgbActiveModal, 
+    IssueService, 
+    JwtInterceptor,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

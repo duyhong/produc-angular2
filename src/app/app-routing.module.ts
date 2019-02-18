@@ -5,6 +5,8 @@ import { ProductListComponent } from './products/product-list.component';
 import { CartComponent } from './shoppingCart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersComponent } from './orders/orders.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'products', },
@@ -12,7 +14,9 @@ const routes: Routes = [
   //{ path: 'characters/:id', component: CharacterComponent },
   { path: 'cart', component: CartComponent },
   //  ,children: [{ path: 'checkout', component: CheckoutComponent, outlet: 'checkout-route' }] }
-  { path: 'orders', component: OrdersComponent }
+  { path: 'orders', component: OrdersComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
@@ -25,7 +29,9 @@ export const routableComponents = [
   ProductListComponent,
   CartComponent,
   CheckoutComponent,
-  OrdersComponent
+  OrdersComponent,
+  LoginComponent,
+  RegisterComponent
 ];
 
 export const appRoutingProviders: any[] = [
